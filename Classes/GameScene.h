@@ -12,12 +12,16 @@
 #include "cocos2d.h"
 #include "cocosGUI.h"
 
+class Grid;
+
 class GameScene : public cocos2d::Node
 {
 public:
     CREATE_FUNC(GameScene);
 
 protected:
+    Grid* grid;
+
     bool init() override;
     void onEnter() override;
 
