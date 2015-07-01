@@ -45,6 +45,9 @@ void SceneManager::enterGameScene(bool networked)
     scene->addChild(gameScene);
 
     Director::getInstance()->pushScene(scene);
+}
 
-
+void SceneManager::returnToLobby()
+{
+    Director::getInstance()->popScene();
 }
