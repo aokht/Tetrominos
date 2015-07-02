@@ -7,12 +7,15 @@
 //
 
 #include "Grid.h"
+#include "Tetromino.h"
 
 bool Grid::init()
 {
     if (! Sprite::initWithFile("grid.png")) {
         return false;
     }
+
+    Tetromino* test = Tetromino::createWithType(TetrominoType::I);
 
     return true;
 }
