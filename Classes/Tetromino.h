@@ -23,7 +23,9 @@ private:
     CREATE_FUNC(Tetromino);
 
     TetrominoType type;
+    cocos2d::Color3B color;
     std::vector<std::vector<Coordinate>> rotations;
+    std::vector<cocos2d::Sprite*> blocks;
 };
 
 #endif /* defined(__Tetrominos__Tetromino__) */

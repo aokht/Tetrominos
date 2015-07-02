@@ -15,7 +15,5 @@ bool Grid::init()
         return false;
     }
 
-    Tetromino* test = Tetromino::createWithType(TetrominoType::I);
-
     return true;
 }
