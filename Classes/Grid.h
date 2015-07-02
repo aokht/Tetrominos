@@ -11,14 +11,21 @@
 
 #include "cocos2d.h"
 
+class Tetromino;
+
 class Grid : public cocos2d::Sprite
 {
 public:
     CREATE_FUNC(Grid);
 
+    void rotateActiveTetromino();
+
 protected:
     bool init() override;
+    void onEnter() override;
 
+private:
+    Tetromino* activeTetromino;
 };
 
 #endif /* defined(__Tetrominos__Grid__) */

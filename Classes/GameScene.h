@@ -27,6 +27,7 @@ protected:
 
 private:
     void backButtonPressed(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType eEventType);
+    void setupTouchHandling();
 
 
 };

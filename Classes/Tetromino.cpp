@@ -13,6 +13,9 @@
 
 using namespace cocos2d;
 
+#pragma mark -
+#pragma mark LifeCycles
+
 Tetromino* Tetromino::createWithType(TetrominoType type)
 {
     Tetromino* tetromino = Tetromino::create();
@@ -35,15 +38,17 @@ bool Tetromino::initWithType(TetrominoType type)
     this->type = type;
     this->color = tetrominoState.color;
     this->rotations = tetrominoState.rotations;
+    this->blocks.reserve(4);
 
-    this->blocks = std::vector<Sprite*>(4);
+    this->rotationIndex = 0;
+
 
     Sprite* dummyBlock = Sprite::create("block.png");
     Size dummySize = dummyBlock->getContentSize();
     float gridSizeF = float(GRID_SIZE);
     this->setContentSize(Size(dummySize.width * gridSizeF, dummySize.height * gridSizeF));
 
-    auto coordinates = rotations[0];
+    auto coordinates = rotations[this->rotationIndex];
     for (Coordinate coordinate : coordinates) {
         Sprite* block = Sprite::create("block.png");
         block->setColor(this->color);
@@ -55,4 +60,32 @@ bool Tetromino::initWithType(TetrominoType type)
     }
 
     return true;
+}
+
+#pragma mark -
+#pragma mark Public Methods
+
+void Tetromino::rotate(bool right)
+{
+    if (right) {
+        this->rotationIndex++;
+    } else {
+        this->rotationIndex--;
+    }
+
+    int rotationSize = (int)rotations.size();
+    if (rotationIndex >= rotationSize) {
+        rotationIndex = 0;
+    } else if (rotationIndex < 0) {
+        rotationIndex = rotationSize - 1;
+    }
+
+    std::vector<Coordinate> coordinates = this->rotations[rotationIndex];
+    for (int i = 0; i != GRID_SIZE; ++i) {
+        Coordinate coordinate = coordinates[i];
+        Sprite* block = this->blocks[i];
+
+        Size size = block->getContentSize();
+        block->setPosition(Vec2(coordinate.x * size.width, coordinate.y * size.height));
+    }
 }
