@@ -27,6 +27,8 @@ bool GameScene::init()
 
     this->tetrominoBag = std::unique_ptr<TetrominoBag>(new TetrominoBag());
 
+    this->active = false;
+
     return true;
 }
 
@@ -54,6 +56,7 @@ void GameScene::onEnter()
     this->addChild(backButton);
 
     this->setupTouchHandling();
+    this->setGameActive(true);
 }
 
 void GameScene::setupTouchHandling()
@@ -94,4 +97,22 @@ void GameScene::backButtonPressed(cocos2d::Ref* pSender, cocos2d::ui::Widget::To
     if (eEventType == ui::Widget::TouchEventType::ENDED) {
         SceneManager::getInstance()->returnToLobby();
     }
+}
+
+void GameScene::setGameActive(bool active)
+{
+    this->active = active;
+
+    if (active) {
+        this->schedule(CC_SCHEDULE_SELECTOR(GameScene::step), INITIAL_STEP_INTERVAL);
+
+    } else {
+        this->unschedule(CC_SCHEDULE_SELECTOR(GameScene::step));
+        
+    }
+}
+
+void GameScene::step(float dt)
+{
+    this->grid->step();
 }

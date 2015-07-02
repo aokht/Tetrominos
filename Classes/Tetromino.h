@@ -20,6 +20,9 @@ public:
 
     void rotate(bool right);
 
+    int getHighestYCoordinate();
+    int getWidthInBlocks();
+
 private:
     bool initWithType(TetrominoType type);
     CREATE_FUNC(Tetromino);

@@ -26,13 +26,16 @@ protected:
 
     bool init() override;
     void onEnter() override;
+    void step(float dt);
 
 private:
     void backButtonPressed(cocos2d::Ref* pSender, cocos2d::ui::Widget::TouchEventType eEventType);
     void setupTouchHandling();
+    void setGameActive(bool active);
 
     std::unique_ptr<TetrominoBag> tetrominoBag;
     Tetromino* createRandomTetromino();
+    bool active;
 
 
 };
