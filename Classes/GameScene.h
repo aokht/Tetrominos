@@ -15,11 +15,14 @@
 
 class Grid;
 class Tetromino;
+class Coordinate;
 
 class GameScene : public cocos2d::Node
 {
 public:
     CREATE_FUNC(GameScene);
+    Coordinate convertPositionToCoordinate(cocos2d::Vec2 position);
+
 
 protected:
     Grid* grid;

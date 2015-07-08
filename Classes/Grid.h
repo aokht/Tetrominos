@@ -27,6 +27,10 @@ public:
     void setActiveTetrominoCoordinate(Coordinate coordinate);
     Coordinate getActiveTetrominoCoordinate();
 
+    cocos2d::Size getBlockSize();
+    Tetromino* getActiveTetromino();
+
+
 protected:
     bool init() override;
     void onEnter() override;
