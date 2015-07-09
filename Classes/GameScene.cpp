@@ -46,9 +46,6 @@ void GameScene::onEnter()
     this->grid->setPosition(Vec2(visibleSize.width * 0.5f, 0.0f));
     this->addChild(this->grid);
 
-    Tetromino* randomTest = this->createRandomTetromino();
-    grid->spawnTetromino(randomTest);
-
     // setup menus
     ui::Button* backButton = ui::Button::create();
     backButton->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -179,7 +176,15 @@ void GameScene::setGameActive(bool active)
 
 void GameScene::step(float dt)
 {
-    this->grid->step();
+
+    Tetromino* activeTetromino = grid->getActiveTetromino();
+    if (! activeTetromino) {
+        Tetromino* newTetromino = this->createRandomTetromino();
+        this->grid->spawnTetromino(newTetromino);
+    }
+    else {
+        this->grid->step();
+    }
 }
 
 #pragma mark -
