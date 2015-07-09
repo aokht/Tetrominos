@@ -102,7 +102,7 @@ int Tetromino::getHighestYCoordinate()
 
 int Tetromino::getWidthInBlocks()
 {
-    int min_x = GRID_WIDTH;
+    int min_x = GRID_SIZE;
     int max_x = 0;
 
     for (Coordinate coordinate : this->rotations[this->rotationIndex]) {
@@ -111,4 +111,31 @@ int Tetromino::getWidthInBlocks()
     }
 
     return max_x - min_x + 1;
+}
+
+int Tetromino::getMinimumXCoordinate()
+{
+    int min_x = GRID_SIZE;
+    for (Coordinate coordinate : this->rotations[this->rotationIndex]) {
+        min_x = std::min(min_x, coordinate.x);
+    }
+
+    return min_x;
+}
+
+std::vector<int> Tetromino::getSkirt()
+{
+    int width = this->getWidthInBlocks();
+    int skirtStart = this->getMinimumXCoordinate();
+
+    std::vector<int> skirt = std::vector<int>(width, GRID_SIZE);
+
+    for (Coordinate coordinate : this->rotations[this->rotationIndex]) {
+        int x = coordinate.x - skirtStart;
+        int skirtY = skirt[x];
+
+        skirt[x] = std::min(coordinate.y, skirtY);
+    }
+
+    return skirt;
 }

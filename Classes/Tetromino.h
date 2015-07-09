@@ -22,6 +22,9 @@ public:
 
     int getHighestYCoordinate();
     int getWidthInBlocks();
+    int getMinimumXCoordinate();
+    std::vector<int> getSkirt();
+
 
 private:
     bool initWithType(TetrominoType type);
