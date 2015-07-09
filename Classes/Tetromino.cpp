@@ -38,7 +38,7 @@ bool Tetromino::initWithType(TetrominoType type)
     this->type = type;
     this->color = tetrominoState.color;
     this->rotations = tetrominoState.rotations;
-    this->blocks.reserve(4);
+    this->blocks.reserve(BLOCKS_PER_TETROMINO);
 
     this->rotationIndex = 0;
 
@@ -138,4 +138,15 @@ std::vector<int> Tetromino::getSkirt()
     }
 
     return skirt;
+}
+
+std::vector<Sprite*> Tetromino::getBlocks()
+{
+    return this->blocks;
+}
+
+
+std::vector<Coordinate> Tetromino::getCurrentRotaion()
+{
+    return rotations[rotationIndex];
 }
