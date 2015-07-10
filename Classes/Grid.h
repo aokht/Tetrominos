@@ -33,6 +33,7 @@ public:
     int getScore();
 
     void dropActiveTetromino();
+    bool checkIfTopReached();
 
 
 

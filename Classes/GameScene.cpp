@@ -32,6 +32,7 @@ bool GameScene::init()
 
     this->active = false;
     this->totalScore = 0;
+    this->stepInterval = INITIAL_STEP_INTERVAL;
 
     return true;
 }
@@ -148,6 +149,18 @@ void GameScene::setupTouchHandling()
 #pragma mark -
 #pragma mark Public Methods
 
+void GameScene::gameOver()
+{
+    this->setGameActive(false);
+
+    std::string scoreString = StringUtils::toString(totalScore);
+    std::string messageContent = "Your score is " + scoreString + "!";
+
+    MessageBox(messageContent.c_str(), "Game Over");
+
+    SceneManager::getInstance()->returnToLobby();
+}
+
 
 #pragma mark -
 #pragma mark Protected Methods
@@ -174,7 +187,7 @@ void GameScene::setGameActive(bool active)
     this->active = active;
 
     if (active) {
-        this->schedule(CC_SCHEDULE_SELECTOR(GameScene::step), INITIAL_STEP_INTERVAL);
+        this->schedule(CC_SCHEDULE_SELECTOR(GameScene::step), this->stepInterval);
 
     } else {
         this->unschedule(CC_SCHEDULE_SELECTOR(GameScene::step));
@@ -184,6 +197,9 @@ void GameScene::setGameActive(bool active)
 
 void GameScene::step(float dt)
 {
+    if (this->grid->checkIfTopReached()) {
+        this->gameOver();
+    }
 
     Tetromino* activeTetromino = grid->getActiveTetromino();
     if (! activeTetromino) {
@@ -203,6 +219,7 @@ void GameScene::updateStateFromScore()
     if (newscore > this->totalScore) {
         this->totalScore = newscore;
         this->updateScoreLabel(newscore);
+        this->updateGameSpeed(this->totalScore);
     }
 }
 
@@ -210,6 +227,18 @@ void GameScene::updateScoreLabel(int score)
 {
     std::string scoreString = StringUtils::toString(score);
     this->scoreLabel->setString(scoreString);
+}
+
+void GameScene::updateGameSpeed(int score)
+{
+    int stepAcceleration = score / SCORE_TO_ACCELERATE;
+    float intervalDeduction = INITIAL_STEP_INTERVAL * float(stepAcceleration) * ACCELERATION_FACTOR;
+
+    float newInterval = MAX((INITIAL_STEP_INTERVAL - intervalDeduction), SPPED_MAX);
+    this->stepInterval = newInterval;
+
+    this->unschedule(CC_SCHEDULE_SELECTOR(GameScene::step));
+    this->schedule(CC_SCHEDULE_SELECTOR(GameScene::step), this->stepInterval);
 }
 
 #pragma mark -
