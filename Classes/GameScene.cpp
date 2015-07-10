@@ -33,6 +33,7 @@ bool GameScene::init()
     this->active = false;
     this->totalScore = 0;
     this->stepInterval = INITIAL_STEP_INTERVAL;
+    this->timeLeft = TIME_PER_GAME;
 
     return true;
 }
@@ -63,6 +64,12 @@ void GameScene::onEnter()
     this->scoreLabel->setPosition(Vec2(visibleSize.width * 0.5f, visibleSize.height * 0.95f));
     this->scoreLabel->setColor(LABEL_COLOR);
     this->addChild(this->scoreLabel);
+
+    this->timeLeftLabel = ui::Text::create("0", FONT_NAME, FONT_SIZE);
+    this->timeLeftLabel->setAnchorPoint(Vec2(0.5f, 1.0f));
+    this->timeLeftLabel->setPosition(this->scoreLabel->getPosition() - Vec2(0.0f, FONT_SIZE * 1.5f));
+    this->timeLeftLabel->setColor(LABEL_COLOR);
+    this->addChild(this->timeLeftLabel);
 
     this->setupTouchHandling();
     this->setGameActive(true);
@@ -161,6 +168,13 @@ void GameScene::gameOver()
     SceneManager::getInstance()->returnToLobby();
 }
 
+void GameScene::setTimeLeft(float time)
+{
+    this->timeLeft = time;
+
+    std::string timeLeftString = StringUtils::format("%2.1f", this->timeLeft);
+    this->timeLeftLabel->setString(timeLeftString.c_str());
+}
 
 #pragma mark -
 #pragma mark Protected Methods
@@ -188,10 +202,10 @@ void GameScene::setGameActive(bool active)
 
     if (active) {
         this->schedule(CC_SCHEDULE_SELECTOR(GameScene::step), this->stepInterval);
-
+        this->scheduleUpdate();
     } else {
         this->unschedule(CC_SCHEDULE_SELECTOR(GameScene::step));
-        
+        this->unscheduleUpdate();        
     }
 }
 
@@ -209,6 +223,18 @@ void GameScene::step(float dt)
     else {
         this->grid->step();
         this->updateStateFromScore();
+    }
+}
+
+void GameScene::update(float dt)
+{
+    Node::update(dt);
+
+    this->setTimeLeft(this->timeLeft - dt);
+
+    this->timeLeft -= dt;
+    if (this->timeLeft <= 0.0f) {
+        this->gameOver();
     }
 }
 

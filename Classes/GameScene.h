@@ -26,10 +26,12 @@ public:
 protected:
     Grid* grid;
     cocos2d::ui::Text* scoreLabel;
+    cocos2d::ui::Text* timeLeftLabel;
     int totalScore;
     float stepInterval;
     std::unique_ptr<TetrominoBag> tetrominoBag;
     bool active;
+    float timeLeft;
 
     // Lifecycle
     bool init() override;
@@ -40,9 +42,11 @@ protected:
     Tetromino* createRandomTetromino();
     void setGameActive(bool active);
     void step(float dt);
+    void update(float dt) override;
     void updateStateFromScore();
     void updateGameSpeed(int score);
     void gameOver();
+    void setTimeLeft(float time);
 
     // Utility
     Coordinate convertPositionToCoordinate(cocos2d::Vec2 position);
