@@ -230,9 +230,9 @@ void GameScene::update(float dt)
 {
     Node::update(dt);
 
-    this->setTimeLeft(this->timeLeft - dt);
-
     this->timeLeft -= dt;
+    this->setTimeLeft(this->timeLeft);
+
     if (this->timeLeft <= 0.0f) {
         this->gameOver();
     }

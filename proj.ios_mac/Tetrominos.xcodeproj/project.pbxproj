@@ -59,6 +59,8 @@
 		521A8EA919F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
+		5B0E04FF1B50682200077331 /* NetworkingWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5B0E04FB1B50682200077331 /* NetworkingWrapper.mm */; };
+		5B0E05001B50682200077331 /* NetworkManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5B0E04FD1B50682200077331 /* NetworkManager.mm */; };
 		5B4B4F831B447DDE006BA5A2 /* Lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B4F811B447DDE006BA5A2 /* Lobby.cpp */; };
 		5B4B4F841B447DDE006BA5A2 /* Lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B4F811B447DDE006BA5A2 /* Lobby.cpp */; };
 		5B4B4F891B448615006BA5A2 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B4F871B448615006BA5A2 /* GameScene.cpp */; };
@@ -167,6 +169,11 @@
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		5B0E04FA1B50682200077331 /* NetworkingWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkingWrapper.h; sourceTree = "<group>"; };
+		5B0E04FB1B50682200077331 /* NetworkingWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NetworkingWrapper.mm; sourceTree = "<group>"; };
+		5B0E04FC1B50682200077331 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		5B0E04FD1B50682200077331 /* NetworkManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NetworkManager.mm; sourceTree = "<group>"; };
+		5B0E04FE1B50682200077331 /* NetworkManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManagerDelegate.h; sourceTree = "<group>"; };
 		5B4B4F811B447DDE006BA5A2 /* Lobby.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Lobby.cpp; sourceTree = "<group>"; };
 		5B4B4F821B447DDE006BA5A2 /* Lobby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lobby.h; sourceTree = "<group>"; };
 		5B4B4F861B448408006BA5A2 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Constants.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -327,24 +334,10 @@
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				5B4B4F861B448408006BA5A2 /* Constants.h */,
 				5B8C245B1B503617003DF026 /* UIConstants.h */,
-				5B4B4F981B44AFD5006BA5A2 /* Coordinate.cpp */,
-				5B4B4F991B44AFD5006BA5A2 /* Coordinate.h */,
-				5B4B4F871B448615006BA5A2 /* GameScene.cpp */,
-				5B4B4F881B448615006BA5A2 /* GameScene.h */,
-				5B4B4F901B44A495006BA5A2 /* Grid.cpp */,
-				5B4B4F911B44A495006BA5A2 /* Grid.h */,
-				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
-				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
-				5B4B4F9C1B44B3E5006BA5A2 /* JSONPacker.cpp */,
-				5B4B4F9D1B44B3E5006BA5A2 /* JSONPacker.h */,
-				5B4B4F811B447DDE006BA5A2 /* Lobby.cpp */,
-				5B4B4F821B447DDE006BA5A2 /* Lobby.h */,
-				5B4B4F8C1B4498E2006BA5A2 /* SceneManager.cpp */,
-				5B4B4F8D1B4498E2006BA5A2 /* SceneManager.h */,
-				5B4B4F941B44A84B006BA5A2 /* Tetromino.cpp */,
-				5B4B4F951B44A84B006BA5A2 /* Tetromino.h */,
-				5B4B4FA01B45DCA4006BA5A2 /* TetrominoBag.cpp */,
-				5B4B4FA11B45DCA4006BA5A2 /* TetrominoBag.h */,
+				5B0E05021B5068A200077331 /* Scenes */,
+				5B0E05031B5068E900077331 /* GameSprites */,
+				5B0E05041B50690B00077331 /* Utility */,
+				5B0E05011B50686200077331 /* Networking */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -396,6 +389,57 @@
 			name = Icons;
 			path = ios;
 			sourceTree = SOURCE_ROOT;
+		};
+		5B0E05011B50686200077331 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				5B0E04FA1B50682200077331 /* NetworkingWrapper.h */,
+				5B0E04FB1B50682200077331 /* NetworkingWrapper.mm */,
+				5B0E04FC1B50682200077331 /* NetworkManager.h */,
+				5B0E04FD1B50682200077331 /* NetworkManager.mm */,
+				5B0E04FE1B50682200077331 /* NetworkManagerDelegate.h */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		5B0E05021B5068A200077331 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				5B4B4F871B448615006BA5A2 /* GameScene.cpp */,
+				5B4B4F881B448615006BA5A2 /* GameScene.h */,
+				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
+				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
+				5B4B4F811B447DDE006BA5A2 /* Lobby.cpp */,
+				5B4B4F821B447DDE006BA5A2 /* Lobby.h */,
+				5B4B4F8C1B4498E2006BA5A2 /* SceneManager.cpp */,
+				5B4B4F8D1B4498E2006BA5A2 /* SceneManager.h */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		5B0E05031B5068E900077331 /* GameSprites */ = {
+			isa = PBXGroup;
+			children = (
+				5B4B4F901B44A495006BA5A2 /* Grid.cpp */,
+				5B4B4F911B44A495006BA5A2 /* Grid.h */,
+				5B4B4F941B44A84B006BA5A2 /* Tetromino.cpp */,
+				5B4B4F951B44A84B006BA5A2 /* Tetromino.h */,
+			);
+			name = GameSprites;
+			sourceTree = "<group>";
+		};
+		5B0E05041B50690B00077331 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				5B4B4F981B44AFD5006BA5A2 /* Coordinate.cpp */,
+				5B4B4F991B44AFD5006BA5A2 /* Coordinate.h */,
+				5B4B4F9C1B44B3E5006BA5A2 /* JSONPacker.cpp */,
+				5B4B4F9D1B44B3E5006BA5A2 /* JSONPacker.h */,
+				5B4B4FA01B45DCA4006BA5A2 /* TetrominoBag.cpp */,
+				5B4B4FA11B45DCA4006BA5A2 /* TetrominoBag.h */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -544,8 +588,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B4B4F921B44A495006BA5A2 /* Grid.cpp in Sources */,
+				5B0E04FF1B50682200077331 /* NetworkingWrapper.mm in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
+				5B0E05001B50682200077331 /* NetworkManager.mm in Sources */,
 				5B4B4F8E1B4498E2006BA5A2 /* SceneManager.cpp in Sources */,
 				5B4B4F831B447DDE006BA5A2 /* Lobby.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
