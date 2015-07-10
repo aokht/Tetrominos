@@ -184,6 +184,7 @@
 		5B4B4F9D1B44B3E5006BA5A2 /* JSONPacker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONPacker.h; sourceTree = "<group>"; };
 		5B4B4FA01B45DCA4006BA5A2 /* TetrominoBag.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TetrominoBag.cpp; sourceTree = "<group>"; };
 		5B4B4FA11B45DCA4006BA5A2 /* TetrominoBag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TetrominoBag.h; sourceTree = "<group>"; };
+		5B8C245B1B503617003DF026 /* UIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIConstants.h; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -325,6 +326,7 @@
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				5B4B4F861B448408006BA5A2 /* Constants.h */,
+				5B8C245B1B503617003DF026 /* UIConstants.h */,
 				5B4B4F981B44AFD5006BA5A2 /* Coordinate.cpp */,
 				5B4B4F991B44AFD5006BA5A2 /* Coordinate.h */,
 				5B4B4F871B448615006BA5A2 /* GameScene.cpp */,

@@ -9,6 +9,7 @@
 #include "Grid.h"
 #include "Tetromino.h"
 #include "Coordinate.h"
+#include "UIConstants.h"
 
 using namespace cocos2d;
 
@@ -23,6 +24,8 @@ bool Grid::init()
 
     this->activeTetromino = nullptr;
     this->activeTetrominoCoordinate = Coordinate();
+    this->score = 0;
+    this->totalLinesCleared = 0;
 
     for (int index = 0; index < GRID_HEIGHT; ++index) {
         std::vector<Sprite*> row(GRID_WIDTH, nullptr);
@@ -73,7 +76,7 @@ void Grid::spawnTetromino(Tetromino *tetromino)
     // add ghost tetromino
     this->ghostTetromino = Tetromino::createWithType(tetromino->getTetrominoType());
     this->ghostTetromino->setCascadeOpacityEnabled(true);
-    this->ghostTetromino->setOpacity(70);
+    this->ghostTetromino->setOpacity(GHOST_TETROMINO_OPACITY);
     this->updateGhostTetrominoPosition();
     this->addChild(this->ghostTetromino);
 }
@@ -123,6 +126,16 @@ Size Grid::getBlockSize()
 Tetromino* Grid::getActiveTetromino()
 {
     return this->activeTetromino;
+}
+
+int Grid::getScore()
+{
+    return this->score;
+}
+
+int Grid::getTotalLinesCleared()
+{
+    return this->totalLinesCleared;
 }
 
 #pragma mark -
@@ -225,6 +238,8 @@ void Grid::dropActiveTetromino()
 
 void Grid::clearLines()
 {
+    int linesCleared = 0;
+
     for (int y = 0; y < GRID_HEIGHT; ++y) {
         // check all the blocks in a row are filled
         bool fullLine = true;
@@ -256,12 +271,17 @@ void Grid::clearLines()
                 }
             }
 
+            linesCleared++;
+
             std::vector<Sprite*> newRow(GRID_WIDTH, nullptr);
             blocksLanded.push_back(newRow);
 
             y--;
         }
     }
+
+    this->totalLinesCleared += linesCleared;
+    this->updateScore(linesCleared);
 }
 
 void Grid::updateGhostTetrominoPosition()
@@ -270,4 +290,15 @@ void Grid::updateGhostTetrominoPosition()
         Coordinate landingCoordinate = this->getTetrominoLandingCoordinate();
         ghostTetromino->setPosition(this->convertCoordinateToPosition(landingCoordinate));
     }
+}
+
+void Grid::updateScore(int linesCleared)
+{
+    int scoreToAdd = linesCleared;
+
+    if (linesCleared == 4) {
+        scoreToAdd = 5;
+    }
+
+    this->score += scoreToAdd;
 }
