@@ -38,9 +38,11 @@ protected:
 
 private:
     Tetromino* activeTetromino;
+    Tetromino* ghostTetromino;
     Coordinate activeTetrominoCoordinate;
     cocos2d::Vec2 convertCoordinateToPosition(Coordinate coordinate);
     std::vector<std::vector<cocos2d::Sprite*>> blocksLanded;
+
 
     bool checkIfTetrominoCollides(Tetromino* tetromino, Coordinate tetrominoCoordinate);
 
@@ -48,6 +50,8 @@ private:
     void placeTetrominoOnBoard(Tetromino* tetromino, Coordinate tetrominoCoordinate);
     Coordinate getTetrominoLandingCoordinate();
     void clearLines();
+    void updateGhostTetrominoPosition();
+    
 };
 
 #endif /* defined(__Tetrominos__Grid__) */

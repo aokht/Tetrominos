@@ -150,3 +150,8 @@ std::vector<Coordinate> Tetromino::getCurrentRotaion()
 {
     return rotations[rotationIndex];
 }
+
+TetrominoType Tetromino::getTetrominoType()
+{
+    return this->type;
+}

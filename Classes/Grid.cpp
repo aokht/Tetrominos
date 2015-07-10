@@ -47,6 +47,9 @@ void Grid::rotateActiveTetromino()
 
         if (this->checkIfTetrominoCollides(this->activeTetromino, this->activeTetrominoCoordinate)) {
             this->activeTetromino->rotate(false);
+        } else {
+            ghostTetromino->rotate(true);
+            this->updateGhostTetrominoPosition();
         }
     }
 }
@@ -66,6 +69,13 @@ void Grid::spawnTetromino(Tetromino *tetromino)
     this->setActiveTetrominoCoordinate(spawnCoordinate);
 
     this->addChild(this->activeTetromino);
+
+    // add ghost tetromino
+    this->ghostTetromino = Tetromino::createWithType(tetromino->getTetrominoType());
+    this->ghostTetromino->setCascadeOpacityEnabled(true);
+    this->ghostTetromino->setOpacity(70);
+    this->updateGhostTetrominoPosition();
+    this->addChild(this->ghostTetromino);
 }
 
 void Grid::step()
@@ -91,6 +101,8 @@ void Grid::setActiveTetrominoCoordinate(Coordinate coordinate)
         if (! this->checkIfTetrominoCollides(activeTetromino, coordinate)) {
             activeTetrominoCoordinate = coordinate;
             activeTetromino->setPosition(convertCoordinateToPosition(activeTetrominoCoordinate));
+
+            this->updateGhostTetrominoPosition();
         }
     }
 }
@@ -152,6 +164,9 @@ void Grid::deactivateTetromino(Tetromino *tetromino, Coordinate tetrominoCoordin
 
     this->activeTetromino->removeFromParent();
     this->activeTetromino = nullptr;
+
+    this->ghostTetromino->removeFromParent();
+    this->ghostTetromino = nullptr;
 
     this->clearLines();
 }
@@ -246,5 +261,13 @@ void Grid::clearLines()
 
             y--;
         }
+    }
+}
+
+void Grid::updateGhostTetrominoPosition()
+{
+    if (ghostTetromino) {
+        Coordinate landingCoordinate = this->getTetrominoLandingCoordinate();
+        ghostTetromino->setPosition(this->convertCoordinateToPosition(landingCoordinate));
     }
 }
