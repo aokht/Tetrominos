@@ -44,6 +44,11 @@
     [_advertiserAssistant start];
 }
 
+- (void)stopAdvertisingAvailablity
+{
+    [_advertiserAssistant stop];
+}
+
 - (void)showPeerList
 {
     // Display view listing nearby peers

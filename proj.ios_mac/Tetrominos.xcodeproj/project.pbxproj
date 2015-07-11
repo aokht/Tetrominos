@@ -61,6 +61,9 @@
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		5B0E04FF1B50682200077331 /* NetworkingWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5B0E04FB1B50682200077331 /* NetworkingWrapper.mm */; };
 		5B0E05001B50682200077331 /* NetworkManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5B0E04FD1B50682200077331 /* NetworkManager.mm */; };
+		5B0E05061B50783700077331 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0E05051B50783700077331 /* MultipeerConnectivity.framework */; };
+		5B0E05091B508AEE00077331 /* PreviewGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B0E05071B508AEE00077331 /* PreviewGrid.cpp */; };
+		5B0E050A1B508AEE00077331 /* PreviewGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B0E05071B508AEE00077331 /* PreviewGrid.cpp */; };
 		5B4B4F831B447DDE006BA5A2 /* Lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B4F811B447DDE006BA5A2 /* Lobby.cpp */; };
 		5B4B4F841B447DDE006BA5A2 /* Lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B4F811B447DDE006BA5A2 /* Lobby.cpp */; };
 		5B4B4F891B448615006BA5A2 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B4B4F871B448615006BA5A2 /* GameScene.cpp */; };
@@ -174,6 +177,9 @@
 		5B0E04FC1B50682200077331 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		5B0E04FD1B50682200077331 /* NetworkManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NetworkManager.mm; sourceTree = "<group>"; };
 		5B0E04FE1B50682200077331 /* NetworkManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManagerDelegate.h; sourceTree = "<group>"; };
+		5B0E05051B50783700077331 /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = DEVELOPER_DIR; };
+		5B0E05071B508AEE00077331 /* PreviewGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PreviewGrid.cpp; sourceTree = "<group>"; };
+		5B0E05081B508AEE00077331 /* PreviewGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewGrid.h; sourceTree = "<group>"; };
 		5B4B4F811B447DDE006BA5A2 /* Lobby.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Lobby.cpp; sourceTree = "<group>"; };
 		5B4B4F821B447DDE006BA5A2 /* Lobby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lobby.h; sourceTree = "<group>"; };
 		5B4B4F861B448408006BA5A2 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Constants.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -207,6 +213,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B0E05061B50783700077331 /* MultipeerConnectivity.framework in Frameworks */,
 				52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */,
 				1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */,
 				D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */,
@@ -293,6 +300,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5B0E05051B50783700077331 /* MultipeerConnectivity.framework */,
 				8262943D1AAF051F00CB7CF7 /* Security.framework */,
 				52B47A461A53D09B004E4C60 /* Security.framework */,
 				D6B0611A1803AB670077942B /* CoreMotion.framework */,
@@ -420,6 +428,8 @@
 		5B0E05031B5068E900077331 /* GameSprites */ = {
 			isa = PBXGroup;
 			children = (
+				5B0E05071B508AEE00077331 /* PreviewGrid.cpp */,
+				5B0E05081B508AEE00077331 /* PreviewGrid.h */,
 				5B4B4F901B44A495006BA5A2 /* Grid.cpp */,
 				5B4B4F911B44A495006BA5A2 /* Grid.h */,
 				5B4B4F941B44A84B006BA5A2 /* Tetromino.cpp */,
@@ -595,6 +605,7 @@
 				5B4B4F8E1B4498E2006BA5A2 /* SceneManager.cpp in Sources */,
 				5B4B4F831B447DDE006BA5A2 /* Lobby.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				5B0E05091B508AEE00077331 /* PreviewGrid.cpp in Sources */,
 				5B4B4F891B448615006BA5A2 /* GameScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				5B4B4F9A1B44AFD5006BA5A2 /* Coordinate.cpp in Sources */,
@@ -613,6 +624,7 @@
 				5B4B4F9B1B44AFD5006BA5A2 /* Coordinate.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				5B4B4F8F1B4498E2006BA5A2 /* SceneManager.cpp in Sources */,
+				5B0E050A1B508AEE00077331 /* PreviewGrid.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				5B4B4F841B447DDE006BA5A2 /* Lobby.cpp in Sources */,
 				5B4B4F931B44A495006BA5A2 /* Grid.cpp in Sources */,

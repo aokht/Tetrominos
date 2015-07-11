@@ -17,6 +17,8 @@ class NetworkManagerDelegate;
 
 - (void)startAdvertisingAvailability;
 
+- (void)stopAdvertisingAvailablity;
+
 - (void)showPeerList;
 
 - (void)sendData:(NSData*)data;

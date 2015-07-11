@@ -35,7 +35,7 @@ public:
     void dropActiveTetromino();
     bool checkIfTopReached();
 
-
+    std::vector<std::vector<Sprite*>> getBlocksLanded();
 
 protected:
     bool init() override;

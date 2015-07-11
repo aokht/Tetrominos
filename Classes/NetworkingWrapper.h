@@ -35,6 +35,8 @@ public:
     void setDelegate(NetworkingDelegate* delegate);
     
     void startAdvertisingAvailability();
+
+    void stopAdvertisingAvailability();
     
     void showPeerList();
     

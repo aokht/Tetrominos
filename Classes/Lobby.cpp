@@ -27,6 +27,8 @@ void Lobby::onEnter()
 {
     Node::onEnter();
 
+    SceneManager::getInstance()->receiveMutiplayerInvitations();
+
     Size visibleSize = Director::getInstance()->getVisibleSize();
 
     Sprite* logo = Sprite::create("logo.png");
@@ -51,7 +53,6 @@ void Lobby::onEnter()
 
 void Lobby::singlePlayerPressed(Ref* pSender, ui::Widget::TouchEventType eEventType)
 {
-    CCLOG("1 player!");
     if (eEventType == ui::Widget::TouchEventType::ENDED) {
         SceneManager::getInstance()->enterGameScene(false);
     }
@@ -59,5 +60,7 @@ void Lobby::singlePlayerPressed(Ref* pSender, ui::Widget::TouchEventType eEventT
 
 void Lobby::multiplayerPressed(Ref* pSender, ui::Widget::TouchEventType eEventType)
 {
-    CCLOG("2 player!");
+    if (eEventType == ui::Widget::TouchEventType::ENDED) {
+        SceneManager::getInstance()->showPeerList();
+    }
 }
